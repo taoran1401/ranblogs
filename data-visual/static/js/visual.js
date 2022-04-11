@@ -1,11 +1,3 @@
-/**
- * @type Jannchie
- * @email jannchie@gmail.com
- * @create date 2018-05-02 13:17:10
- * @modify date 2019-03-20 15:17:24
- * @desc Visual core code
- */
-
 // import * as d3 from 'd3';
 // require("./stylesheet.css");
 
