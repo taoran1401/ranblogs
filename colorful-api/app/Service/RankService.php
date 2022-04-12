@@ -30,68 +30,51 @@ class RankService extends AbstractController
     }
 
     /**
-     * 按日生成csv
+     * 生成csv(按日 - day，按周 - week，按月 - month, 按季度 - quarter, 按年 - year)
      *
      * @param $file
      * @param $startDate
      * @param $endDate
      * @param array|null $names
+     * @param string $type
      * @return bool
+     * @throws \Exception
      */
-    public function genCsvByDay($file, $startDate, $endDate, array $names = null)
+    public function genCsv($file, $startDate, $endDate, array $names = null, string $type = 'day')
     {
+        $dates = getDateByInterval($startDate ,$endDate, $type);
+
         $file = fopen($file, 'w');
 
-        fputcsv($file, ['name', 'date', 'value']);
-        if (!empty($names)) {
-            $rank = Db::table('rank')->where('is_on', 1)
-                ->where('date', '>=', $startDate)
-                ->where('date', '<=', $endDate)
-                ->whereIn('name', $names)
-                ->orderBy('date', 'asc')
-                ->get();
-            $rank->each(function ($item) use ($file) {
-                fputcsv($file, [$item->name, $item->date, $item->value]);
-            });
-        } else {
-            $rank = Db::table('rank')->where('is_on', 1)
-                ->where('date', '>=', $startDate)
-                ->where('date', '<=', $endDate)
-                ->orderBy('date', 'asc')
-                ->get();
-            $rank->each(function ($item) use ($file) {
-                fputcsv($file, [$item->name, $item->date, $item->value]);
-            });
-        }
-
-        fclose($file);
-        return true;
-    }
-
-    public function genCsvByWeek($file, $startDate, $endDate)
-    {
-        $dates = getDateByInterval($startDate ,$endDate, 'week');
-
-        $file = fopen($file, 'w');
         if (!$file) {
             throw new \Exception('文件');
         }
 
-        $names = Db::table('rank')->groupBy('name')->pluck('name');
-        fputcsv($file, ['name', 'other', 'date', 'value']);
-        $names->each(function ($item) use ($dates, $file) {
-            foreach ($dates as $val) {
-                $sum = Db::table('rank')->where('is_on', 1)
-                    ->where('date', '>=', $val['startDate'])
-                    ->where('date', '<=', $val['endDate'])
-                    ->where('name', $item)
-                    ->groupBy('name')
-                    ->orderBy('date', 'asc')
-                    ->sum('value');
-                fputcsv($file, [$item, '', $val['endDate'], $sum]);
-            }
-        });
+        fputcsv($file, ['name', 'date', 'value']);
+
+        $rank = Db::table('rank')->where('is_on', 1);
+
+        if (!empty($names)) {
+            $rank->whereIn('name', $names);
+        }
+
+        foreach ($dates as $val) {
+            $rank = Db::table('rank')->where('is_on', 1)
+                ->selectRaw('
+                    `name`,
+                    sum(`value`) as `value`
+                ')
+                ->where('date', '>=', $val['startDate'])
+                ->where('date', '<=', $val['endDate'])
+                ->whereIn('name', $names)
+                ->groupBy('name')
+                ->orderBy('date', 'asc')
+                ->first();
+            fputcsv($file, [$rank->name, $val['endDate'], $rank->value]);
+        }
 
         fclose($file);
+
+        return true;
     }
 }
