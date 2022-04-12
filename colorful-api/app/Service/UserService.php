@@ -64,30 +64,6 @@ class UserService extends AbstractController
 
     public function register(array $params)
     {
-        //参数验证
-        $validator = $this->validationFactory->make(
-            $params,
-            [
-                'email' => 'required|email',
-                'nickname' => 'required',
-                'password' => 'required|min:8|max:16|confirmed',
-                'password_confirmation' => 'required',
-            ],
-            [
-                'email.required' => '邮箱不能为空！',
-                'email.email' => '请填写正确的邮箱！',
-                'nickname.required' => '请填写昵称！',
-                'password.required' => '请填写密码！',
-                'password.min' => '密码应该在8-16位！',
-                'password.max' => '密码应该在8-16位！',
-                'password.confirmed' => '两次密码不一致！',
-                'password_confirmation.required' => '请输入重复密码！',
-            ]
-        );
-
-        if ($validator->fails()) {
-            throw new \Exception($validator->errors()->first());
-        }
 
         try {
             Db::beginTransaction();
