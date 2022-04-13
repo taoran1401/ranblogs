@@ -87,7 +87,7 @@ class CrawlerXQJ extends HyperfCommand
             $mail->CharSet='UTF-8'; //设置邮件的字符编码，这很重要，不然中文乱码
             $mail->SMTPAuth = true; //开启认证
             $mail->SMTPSecure = 'ssl'; // 使用安全协议
-            $mail->Port = 587; //端口请保持默认
+            $mail->Port = 465; //端口请保持默认
 
 //            $mail->Host = "smtp.163.com"; //smtp服务器
 //            $mail->Username = "taoran0796@163.com"; //这个可以替换成自己的邮箱
