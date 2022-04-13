@@ -27,7 +27,11 @@ class IndexController extends AbstractController
 
     public function index()
     {
-        phpinfo();
+        $arr = [
+            'status' => 200,
+            'data' => 'ok'
+        ];
+        return json_encode($arr);
     }
 
 
