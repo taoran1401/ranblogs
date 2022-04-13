@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Event\Demo;
 use App\Service\RankService;
 use Carbon\Carbon;
 use Hyperf\Command\Command as HyperfCommand;
@@ -12,6 +13,7 @@ use Hyperf\Context\Context;
 use Hyperf\DbConnection\Db;
 use Hyperf\Utils\Coroutine;
 use Psr\Container\ContainerInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use function Taoran\HyperfPackage\Helpers\getDateByInterval;
 use function Taoran\HyperfPackage\Helpers\set_save_data;
@@ -33,6 +35,12 @@ class TestCmd extends HyperfCommand
      */
     protected $rankService;
 
+    /**
+     * @Inject()
+     * @var EventDispatcherInterface
+     */
+    protected $eventDispatcher;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -48,7 +56,6 @@ class TestCmd extends HyperfCommand
 
     public function handle()
     {
-
 //        $this->rankService->genCsvByDay('./202201_anime_rank.csv', '2022-01-01', '2022-04-09');
 //        $this->line('ok', 'info');
         exit;

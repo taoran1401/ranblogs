@@ -24,9 +24,37 @@ class RankService extends AbstractController
         if (isset($params['status']) && $params['status'] != 0) {
             throw new \Exception($params['message']);
         }
-        $baiduIndex = new \App\Packages\DataInterface\src\BiaduIndex();
-        $baiduIndex->loadMysql($params, new \App\Model\Rank());
+        //$baiduIndex = new \App\Packages\DataInterface\src\BiaduIndex();
+        $this->loadMysql($params, new \App\Model\Rank());
         return true;
+    }
+
+    /**
+     * 装载到mysql
+     *
+     * @param $content
+     * @param $model
+     */
+    public function loadMysql($content, $model)
+    {
+        $content = $content['data']['userIndexes'];
+        foreach ($content as $key => $val) {
+            foreach ($val['all']['formatdata'] as $key => $_val) {
+                $insert = [
+                    'name' => $val['word'][0]['name'],
+                    'other' => 'tmp',
+                    'origin' => 1,
+                    'type' => 0,
+                    'date' => $_val['date'],
+                    'value' => $_val['value'],
+                ];
+
+                $model->updateOrInsert(
+                    ['date' => $insert['date'], 'name' => $insert['name'], 'origin' => $insert['origin'], 'type' => $insert['type']],
+                    $insert
+                );
+            }
+        }
     }
 
     /**
