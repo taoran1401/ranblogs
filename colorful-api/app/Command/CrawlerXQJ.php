@@ -102,7 +102,7 @@ class CrawlerXQJ extends HyperfCommand
             //$mail->IsSendmail(); //如果没有sendmail组件就注释掉，否则出现“Could not execute: /var/qmail/bin/sendmail ”的错误提示
             //$mail->AddReplyTo("taoran0796@163.com","mckee");//回复地址
 
-            $mail->FromName = 'colorful-admin';     //发件人名称
+            $mail->FromName = 'colorful test';     //发件人名称
             $mail->AddAddress('2357144431@qq.com'); //收件人
             $mail->Subject = 'colorful的邮箱验证'; //邮件主题
             $mail->Body = '<html><head>
