@@ -180,4 +180,52 @@ class TestCmd extends HyperfCommand
         $ext = explode('.', $file);
         return $ext[count($ext) - 1];
     }
+
+    /**
+     * 发送邮件
+     * @param $address
+     * @param $subject
+     * @param $message
+     * @return array
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
+    public static function send_email($address,$message) {
+        $mail=new PHPMailer(true);
+        //开启调试
+        //$mail->SMTPDebug = 1;
+        // 设置PHPMailer使用SMTP服务器发送Email
+        $mail->IsSMTP();
+        $mail->IsHTML(true);
+        // 设置邮件的字符编码，若不指定，则为'UTF-8'
+        $mail->CharSet='UTF-8';
+        // 添加收件人地址，可以多次使用来添加多个收件人
+        $mail->AddAddress($address);
+        // 设置邮件正文
+        $mail->Body=sys_config(system_config::EMAIL_MESSAGE)."\n".$message??""."\n".$message;
+        // 设置邮件头的From字段。
+        $mail->From=sys_config(system_config::EMAIL_FROM);                          //from头，和邮箱地址一致
+        // 设置发件人名字
+        $mail->FromName=sys_config(system_config::EAMIL_SEND_NAME);
+        // 设置邮件标题
+        $mail->Subject=sys_config(system_config::EMAIL_SUBJECT);
+        // 设置SMTP服务器。
+        $mail->Host=sys_config(system_config::EMAIL_SMTP);                         //SMTP服务器
+        //设置使用ssl加密方式登录鉴权
+        $mail->SMTPSecure = 'ssl';
+        // 设置SMTP服务器端口。
+        $port=sys_config(system_config::EMAIL_PORT);
+        $mail->Port=empty($port)?"465":$port;
+        // 设置为"需要验证"
+        $mail->SMTPAuth=true;
+        // 设置用户名和密码。
+        $mail->Username=sys_config(system_config::EMAIL_USERNAME);                  //用户名
+        $mail->Password=sys_config(system_config::EMAIL_PASSWORD);                 //邮件授权码
+        // 发送邮件。
+        if(!$mail->Send()) {
+            $mailerror=$mail->ErrorInfo;
+            return array("error"=>1,"message"=>$mailerror);
+        }else{
+            return array("error"=>0,"message"=>"success");
+        }
+    }
 }

@@ -41,8 +41,8 @@ class CrawlerXQJ extends HyperfCommand
     public function handle()
     {
         //发送邮件
-//        $this->sendEmail();
-
+        $this->sendEmail();
+        exit;
         //获取net基础信息
         $this->extractBaseInfoSave('https://www.coolzhanweb.com/');
 
@@ -74,7 +74,7 @@ class CrawlerXQJ extends HyperfCommand
         //qq邮箱： 1401..
         //kqahhzplowylbaae
         try {
-            $mail = new PHPMailer(true);
+            $mail = new PHPMailer();
             /*$mail->SMTPOptions = [
                 'ssl' => [
                     'verify_peer' => false,
@@ -82,12 +82,12 @@ class CrawlerXQJ extends HyperfCommand
                     'allow_self_signed' => true
                 ]
             ];*/
-            $mail->SMTPDebug = 2;
+            $mail->SMTPDebug = 1;
             $mail->IsSMTP();
             $mail->CharSet='UTF-8'; //设置邮件的字符编码，这很重要，不然中文乱码
             $mail->SMTPAuth = true; //开启认证
             $mail->SMTPSecure = 'ssl'; // 使用安全协议
-            $mail->Port = 465; //端口请保持默认
+            $mail->Port = 587; //端口请保持默认
 
 //            $mail->Host = "smtp.163.com"; //smtp服务器
 //            $mail->Username = "taoran0796@163.com"; //这个可以替换成自己的邮箱
@@ -96,14 +96,14 @@ class CrawlerXQJ extends HyperfCommand
 
             $mail->Host = "smtp.qq.com"; //smtp服务器
             $mail->Username = "1401696973@qq.com"; //这个可以替换成自己的邮箱
-            $mail->Password = "kqahhzplowylbaae"; //注意 这里是写smtp的授权码 写的不是QQ密码，此授权码不可用
+            $mail->Password = "mpxtaaqxxktoicbb"; //注意 这里是写smtp的授权码 写的不是QQ密码，此授权码不可用
             $mail->From = "1401696973@qq.com"; //发件人邮箱
-
+            //mpxtaaqxxktoicbb
             //$mail->IsSendmail(); //如果没有sendmail组件就注释掉，否则出现“Could not execute: /var/qmail/bin/sendmail ”的错误提示
             //$mail->AddReplyTo("taoran0796@163.com","mckee");//回复地址
 
             $mail->FromName = 'colorful-admin';     //发件人名称
-            $mail->AddAddress('taoran0796@163.com'); //收件人
+            $mail->AddAddress('2357144431@qq.com'); //收件人
             $mail->Subject = 'colorful的邮箱验证'; //邮件主题
             $mail->Body = '<html><head>
 <meta http-equiv="Content-Language" content="zh-cn">
