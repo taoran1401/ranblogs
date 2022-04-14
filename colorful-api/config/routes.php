@@ -37,6 +37,18 @@ Router::addGroup('/api/admin', function () {
     Router::post('/articles', 'App\Controller\Admin\ArticleController@store');
     Router::put('/articles/{id}', 'App\Controller\Admin\ArticleController@update');
     Router::delete('/articles/{id}', 'App\Controller\Admin\ArticleController@destroy');
+    //收集分类
+    Router::get('/collect/categorys', 'App\Controller\Admin\CollectCategoryController@index');
+    Router::get('/collect/categorys/{id}', 'App\Controller\Admin\CollectCategoryController@show');
+    Router::post('/collect/categorys', 'App\Controller\Admin\CollectCategoryController@store');
+    Router::put('/collect/categorys/{id}', 'App\Controller\Admin\CollectCategoryController@update');
+    Router::delete('/collect/categorys/{id}', 'App\Controller\Admin\CollectCategoryController@destroy');
+    //收集
+    Router::get('/collects', 'App\Controller\Admin\CollectController@index');
+    Router::get('/collects/{id}', 'App\Controller\Admin\CollectController@show');
+    Router::post('/collects', 'App\Controller\Admin\CollectController@store');
+    Router::put('/collects/{id}', 'App\Controller\Admin\CollectController@update');
+    Router::delete('/collects/{id}', 'App\Controller\Admin\CollectController@destroy');
 
     // 角色管理
     Router::get('/roles', 'App\Controller\Admin\RoleController@index');
@@ -75,6 +87,11 @@ Router::addGroup('/api', function () {
     Router::get('/article/archives', 'App\Controller\Api\ArticleController@Archive');
     //文章标签
     Router::get('/article/tags', 'App\Controller\Api\ArticleTagController@index');
+    //收集
+    Router::get('/collects', 'App\Controller\Api\CollectController@index');
+    Router::get('/collects/{id}', 'App\Controller\Api\CollectController@show');
+    //收集标签
+    Router::get('/collect/tags', 'App\Controller\Api\CollectTagController@index');
     //网站信息
     Router::get('/configs', 'App\Controller\Api\ConfigController@index');
     //关于

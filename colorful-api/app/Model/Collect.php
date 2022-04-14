@@ -31,4 +31,33 @@ class Collect extends Model
     protected $hidden = [
         'is_on'
     ];
+    /**
+     * field is_show
+     */
+    const IS_SHOW_FALSE = 0;
+    const IS_SHOW_TRUE = 1;
+    protected static $is_show = [
+        self::IS_SHOW_FALSE => '隐藏',
+        self::IS_SHOW_TRUE => '显示'
+    ];
+
+    /**
+     * 分类表
+     *
+     * @return \Hyperf\Database\Model\Relations\HasOne
+     */
+    public function collectCategory()
+    {
+        return $this->hasOne(\App\Model\CollectCategory::class, 'id', 'cat_id')->where('is_on', 1);
+    }
+
+    /**
+     * 标签表
+     *
+     * @return \Hyperf\Database\Model\Relations\HasOne
+     */
+    public function collectTags()
+    {
+        return $this->belongsToMany(\App\Model\CollectTag::class, 'collect_collect_tag', 'collect_id', 'tag_id')->where('is_on', 1);
+    }
 }

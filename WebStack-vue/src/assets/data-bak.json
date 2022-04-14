@@ -5,7 +5,6 @@
         "icon": "linecons-star",
         "web": [
             {
-                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
                 "url": "http://index.baidu.com/",
                 "logo": "assets/images/logos/dribbble.png",
                 "title": "百度指数",
