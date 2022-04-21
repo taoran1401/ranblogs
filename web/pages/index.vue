@@ -61,7 +61,7 @@ export default {
     // 2. 查询滚动图广告
     const {data: mainAdvertList} = await app.$getAdvertList(1)
     // 3. 查询课程推荐广告
-    const {data: courseAdvertList} = await app.$getAdvertList(2) 
+    const {data: courseAdvertList} = await app.$getAdvertList(2)
     return {categoryList, mainAdvertList, courseAdvertList}
   },
   

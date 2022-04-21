@@ -162,6 +162,9 @@
       "http://i1.hdslb.com/bfs/face/983034448f81f45f05956d0455a86fe0639d6a36.jpg",
     任意名称: "path/to/img"
   },
+  
+  // 背景图片
+  background_image: '',
 
   // 全局背景颜色
   background_color: "#FFFFFF",

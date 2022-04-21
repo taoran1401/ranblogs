@@ -126,9 +126,14 @@ function draw(data) {
     top: top_margin,
     bottom: bottom_margin
   };
-  var background_color = config.background_color;
 
-  d3.select("body").attr("style", "background:" + background_color);
+  if (config.background_image != '') {
+    var background_image = config.background_image;
+    d3.select("body").attr("style", "background:" + "#00ff00 url('" + background_image + "') no-repeat fixed center;");
+  } else {
+    var background_color = config.background_color;
+    d3.select("body").attr("style", "background:" + background_color);
+  }
 
   var enter_from_0 = config.enter_from_0;
   interval_time /= 3;
