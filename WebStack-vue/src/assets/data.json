@@ -41,360 +41,189 @@
         "name": "互联网数据",
         "en_name": "Inspiration",
         "icon": "linecons-lightbulb",
-        "children": [
+        "web": [
             {
-                "name": "互联网趋势分析",
-                "en_name": "Product",
-                "web": [
-                    {
-                        "url": "http://index.baidu.com/",
-                        "logo": "assets/images/logos/dribbble.png",
-                        "title": "百度指数",
-                        "desc": "百度指数"
-                    },
-                    {
-                        "url": "https://trends.google.com/trends/explore",
-                        "logo": "assets/images/logos/behance.png",
-                        "title": "Google趋势",
-                        "desc": "Google趋势"
-                    },
-                    {
-                        "url": "http://www.stats.gov.cn/tjsj/",
-                        "logo": "assets/images/logos/dribbble.png",
-                        "title": "微信指数",
-                        "desc": "微信指数"
-                    },
-                    {
-                        "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
-                        "logo": "assets/images/logos/zcool.png",
-                        "title": "微博指数",
-                        "desc": "微博指数"
-                    },
-                    {
-                        "url": "https://trendinsight.oceanengine.com/index",
-                        "logo": "assets/images/logos/pinterest.png",
-                        "title": "算数指数",
-                        "desc": "算数指数"
-                    }
-                ]
+                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
+                "url": "http://index.baidu.com/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "百度指数",
+                "desc": "全球UI设计师作品分享平台。"
             },
             {
-                "name": "全球互联网数据",
-                "en_name": "UI Inspiration",
-                "web": [
-                    {
-                        "url": "http://www.internetworldstats.com/stats.htm",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "世界互联网统计数据",
-                        "desc": "世界互联网统计数据"
-                    },
-                    {
-                        "url": "http://gs.statcounter.com/",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "StatCounter",
-                        "desc": "世界互联网统计数据"
-                    },
-                    {
-                        "url": "http://www.netmarketshare.com/",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "Netmarketshare",
-                        "desc": "Netmarketshare"
-                    },
-                    {
-                        "url": "https://data.worldbank.org/indicator/IT.NET.USER.ZS?end=2017&start=1960&view=chart",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "互联网人口数据",
-                        "desc": "互联网人口数据"
-                    },
-                    {
-                        "url": "https://www.statista.com/topics/1145/internet-usage-worldwide/",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "全球互联网使用统计",
-                        "desc": "全球互联网使用统计"
-                    },
-                    {
-                        "url": "http://internettrafficreport.com/",
-                        "logo": "assets/images/logos/Pttrns.png",
-                        "title": "全球流量数据统计",
-                        "desc": "全球流量数据统计"
-                    }
-                ]
+                "url": "https://trends.google.com/trends/explore",
+                "logo": "assets/images/logos/behance.png",
+                "title": "Google趋势",
+                "desc": "Adobe旗下的设计师交流平台，来自世界各地的设计师在这里分享自己的作品。"
             },
             {
-                "name": "航运数据",
-                "en_name": "WEB Inspiration",
-                "is_hot": true,
-                "web": [
-                    {
-                        "url": "http://www.port.org.cn/datainfo/index.htm",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "中国港口数据",
-                        "desc": "中国港口数据"
-                    },
-                    {
-                        "url": "https://www.mardep.gov.hk/sc/fact/portstat.html",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "香港海事统计",
-                        "desc": "香港海事统计"
-                    },
-                    {
-                        "url": "https://www.sse.net.cn/index/singleIndex?indexType=ccfi",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "上海航运交易所",
-                        "desc": "上海航运交易所"
-                    },
-                    {
-                        "url": "https://www.mot.gov.cn/yunjiazhishu/",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "交通部运价指数",
-                        "desc": "交通部运价指数"
-                    },
-                    {
-                        "url": "https://www.mot.gov.cn/tongjishuju/gangkouhuowulvkettl/",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "上海自贸区数据统计",
-                        "desc": "上海自贸区数据统计"
-                    },
-                    {
-                        "url": "http://www.shippingdata.cn/index.html",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "中国船运数据库",
-                        "desc": "中国船运数据库"
-                    },
-                    {
-                        "url": "https://www.hifleet.com/",
-                        "logo": "assets/images/logos/awwwards.png",
-                        "title": "船队在线",
-                        "desc": "船队在线"
-                    }
-                ]
+                "url": "http://www.stats.gov.cn/tjsj/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "国家统计局",
+                "desc": "国家统计局"
+            },
+            {
+                "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
+                "logo": "assets/images/logos/zcool.png",
+                "title": "微博指数",
+                "desc": "中国人气设计师互动平台"
+            },
+            {
+                "url": "https://www.pinterest.com/",
+                "logo": "assets/images/logos/pinterest.png",
+                "title": "算数指数",
+                "desc": "全球美图收藏采集站"
+            }
+        ]
+    },
+    {
+        "name": "金融",
+        "en_name": "Resources",
+        "icon": "linecons-thumbs-up",
+        "web": [
+            {
+                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
+                "url": "http://index.baidu.com/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "百度指数",
+                "desc": "全球UI设计师作品分享平台。"
+            },
+            {
+                "url": "https://trends.google.com/trends/explore",
+                "logo": "assets/images/logos/behance.png",
+                "title": "Google趋势",
+                "desc": "Adobe旗下的设计师交流平台，来自世界各地的设计师在这里分享自己的作品。"
+            },
+            {
+                "url": "http://www.stats.gov.cn/tjsj/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "国家统计局",
+                "desc": "国家统计局"
+            },
+            {
+                "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
+                "logo": "assets/images/logos/zcool.png",
+                "title": "微博指数",
+                "desc": "中国人气设计师互动平台"
+            },
+            {
+                "url": "https://www.pinterest.com/",
+                "logo": "assets/images/logos/pinterest.png",
+                "title": "算数指数",
+                "desc": "全球美图收藏采集站"
             }
         ]
     },
     {
         "name": "统计机构",
-        "en_name": "Resources",
-        "icon": "linecons-thumbs-up",
-        "children": [
-            {
-                "name": "国内统计",
-                "en_name": "Icon",
-                "web": [
-                    {
-                        "url": "http://data.stats.gov.cn/",
-                        "logo": "assets/images/logos/Iconfinder.png",
-                        "title": "中国统计局",
-                        "desc": "中国统计局"
-                    }
-                ]
-            },
-            {
-                "name": "国外统计",
-                "en_name": "Logo Design",
-                "web": [
-                    {
-                        "url": "https://www.e-stat.go.jp/en",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "日本统计门户",
-                        "desc": "日本统计门户"
-                    },
-                    {
-                        "url": "http://www.stat.go.jp/english/index.htm",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "日本统计局",
-                        "desc": "日本统计局"
-                    },
-                    {
-                        "url": "http://www.census.gov/",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "美国统计署",
-                        "desc": "美国统计署"
-                    },
-                    {
-                        "url": "https://www.bea.gov/",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "美国经济分析局",
-                        "desc": "美国经济分析局"
-                    },
-                    {
-                        "url": "https://www.destatis.de/EN/Homepage.html",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "德国统计局",
-                        "desc": "德国统计局"
-                    },
-                    {
-                        "url": "http://www.kostat.go.kr/eng/",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "韩国统计局",
-                        "desc": "韩国统计局"
-                    },
-                    {
-                        "url": "http://www.gks.ru/wps/wcm/connect/rosstat_main/rosstat/en/main/",
-                        "logo": "assets/images/logos/iconsfeed.png",
-                        "title": "俄罗斯统计局",
-                        "desc": "俄罗斯统计局"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "常用工具",
         "en_name": "Design Tools",
         "icon": "linecons-diamond",
-        "children": [
-            {
-                "name": "图形创意",
-                "en_name": "Creative Graphics",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "界面设计",
-                "en_name": "User Interface",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "交互动效",
-                "en_name": "Motion Design",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "在线配色",
-                "en_name": "Colors",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "在线工具",
-                "en_name": "Online Tools",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "Chrome插件",
-                "en_name": "Chrome Plug-ins",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "学习教程",
-        "en_name": "Tutorial",
-        "icon": "linecons-pencil",
-        "children": [
-            {
-                "name": "设计规范",
-                "en_name": "Design Guidelines",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "视频教程",
-                "en_name": "Video Tutorial",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "设计文章",
-                "en_name": "Design Article",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "设计电台",
-                "en_name": "Design FM",
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            },
-            {
-                "name": "交互设计",
-                "en_name": "UX",
-                "is_hot": true,
-                "web": [
-                    {
-                        "url": "https://airbnb.design",
-                        "logo": "assets/images/logos/AirbnbDesign.png",
-                        "title": "Airbnb Design",
-                        "desc": "Airbnb Design"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "UED团队",
-        "en_name": "UED Team",
-        "icon": "linecons-user",
         "web": [
             {
-                "url": "https://airbnb.design",
-                "logo": "assets/images/logos/AirbnbDesign.png",
-                "title": "Airbnb Design",
-                "desc": "Airbnb Design"
+                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
+                "url": "http://index.baidu.com/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "百度指数",
+                "desc": "全球UI设计师作品分享平台。"
+            },
+            {
+                "url": "https://trends.google.com/trends/explore",
+                "logo": "assets/images/logos/behance.png",
+                "title": "Google趋势",
+                "desc": "Adobe旗下的设计师交流平台，来自世界各地的设计师在这里分享自己的作品。"
+            },
+            {
+                "url": "http://www.stats.gov.cn/tjsj/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "国家统计局",
+                "desc": "国家统计局"
+            },
+            {
+                "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
+                "logo": "assets/images/logos/zcool.png",
+                "title": "微博指数",
+                "desc": "中国人气设计师互动平台"
+            },
+            {
+                "url": "https://www.pinterest.com/",
+                "logo": "assets/images/logos/pinterest.png",
+                "title": "算数指数",
+                "desc": "全球美图收藏采集站"
+            }
+        ]
+    },
+    {
+        "name": "新闻数据",
+        "en_name": "Design Tools",
+        "icon": "linecons-diamond",
+        "web": [
+            {
+                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
+                "url": "http://index.baidu.com/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "百度指数",
+                "desc": "全球UI设计师作品分享平台。"
+            },
+            {
+                "url": "https://trends.google.com/trends/explore",
+                "logo": "assets/images/logos/behance.png",
+                "title": "Google趋势",
+                "desc": "Adobe旗下的设计师交流平台，来自世界各地的设计师在这里分享自己的作品。"
+            },
+            {
+                "url": "http://www.stats.gov.cn/tjsj/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "国家统计局",
+                "desc": "国家统计局"
+            },
+            {
+                "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
+                "logo": "assets/images/logos/zcool.png",
+                "title": "微博指数",
+                "desc": "中国人气设计师互动平台"
+            },
+            {
+                "url": "https://www.pinterest.com/",
+                "logo": "assets/images/logos/pinterest.png",
+                "title": "算数指数",
+                "desc": "全球美图收藏采集站"
+            }
+        ]
+    },
+    {
+        "name": "工具",
+        "en_name": "Design Tools",
+        "icon": "linecons-diamond",
+        "web": [
+            {
+                "faker": "常用推荐, 互联网{}, 新冠肺炎疫情数据, 金融, 政府, , 教育, 企业, 社会, 实用工具{查询工具，分析检测，管理服务}",
+                "url": "http://index.baidu.com/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "百度指数",
+                "desc": "全球UI设计师作品分享平台。"
+            },
+            {
+                "url": "https://trends.google.com/trends/explore",
+                "logo": "assets/images/logos/behance.png",
+                "title": "Google趋势",
+                "desc": "Adobe旗下的设计师交流平台，来自世界各地的设计师在这里分享自己的作品。"
+            },
+            {
+                "url": "http://www.stats.gov.cn/tjsj/",
+                "logo": "assets/images/logos/dribbble.png",
+                "title": "国家统计局",
+                "desc": "国家统计局"
+            },
+            {
+                "url": "http://data.stats.gov.cn/easyquery.htm?cn=C01&zb=A0M0Y01&sj=2018",
+                "logo": "assets/images/logos/zcool.png",
+                "title": "微博指数",
+                "desc": "中国人气设计师互动平台"
+            },
+            {
+                "url": "https://www.pinterest.com/",
+                "logo": "assets/images/logos/pinterest.png",
+                "title": "算数指数",
+                "desc": "全球美图收藏采集站"
             }
         ]
     }
