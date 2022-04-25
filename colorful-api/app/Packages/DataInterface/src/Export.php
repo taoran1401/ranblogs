@@ -7,6 +7,8 @@ namespace App\Packages\DataInterface\src;
 class Export
 {
     /**
+     * 导出csv
+     *
      * @param $file 文件
      * @param $data 数据
      * @param bool $isHeader 是否写入文件头
