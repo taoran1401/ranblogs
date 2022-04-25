@@ -13,3 +13,4 @@ vendor/
 *.cache
 public/
 hot_week.csv
+storage/

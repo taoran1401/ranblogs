@@ -9,7 +9,7 @@ class CollectTagService
 {
     /**
      * @Inject()
-     * @var \App\Model\AollectTag
+     * @var \App\Model\CollectTag
      */
     protected $collectTagModel;
 

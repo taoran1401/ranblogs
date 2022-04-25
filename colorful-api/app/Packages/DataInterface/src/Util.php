@@ -24,6 +24,89 @@ class Util
     }
 
     /**
+     * 查询指定时间范围内的所有日期，月份，季度，年份.
+     *
+     * @param $startDate   指定开始时间，Y-m-d格式
+     * @param $endDate     指定结束时间，Y-m-d格式
+     * @param $type        类型，day 天，month 月份，quarter 季度，year 年份
+     * @return array
+     */
+    public static function getDateByInterval($startDate, $endDate, $type)
+    {
+        if (date('Y-m-d', strtotime($startDate)) != $startDate || date('Y-m-d', strtotime($endDate)) != $endDate) {
+            return '';
+        }
+
+        $tempDate = $startDate;
+        $returnData = [];
+        $i = 0;
+        if ($type == 'day') {    // 查询所有日期
+            if (strtotime($tempDate) == strtotime($endDate)) {
+                $returnData[] =  $startDate;
+            } else {
+                while (strtotime($tempDate) < strtotime($endDate)) {
+                    $tempDate = date('Y-m-d', strtotime('+' . $i . ' day', strtotime($startDate)));
+                    $returnData[] = $tempDate;
+                    ++$i;
+                }
+            }
+        } elseif ($type == 'week') { //查询所有周
+            while (strtotime($tempDate) < strtotime($endDate)) {
+                $temp = [];
+                $idx = strftime('%u', strtotime($startDate . '+' . $i . 'day'));
+                $mon_idx = $idx - 1;
+                $sun_idx = $idx - 7;
+                $startDate_idx = strtotime($startDate . '+' . $i . 'day') - $mon_idx * 86400 > strtotime($startDate) ? strtotime($startDate . '+' . $i . 'day') - $mon_idx * 86400 : strtotime($startDate);
+                $endDate_idx = strtotime($startDate . '+' . $i . 'day') - $sun_idx * 86400 < strtotime($endDate) ? strtotime($startDate . '+' . $i . 'day') - $sun_idx * 86400 : strtotime($endDate);
+                $temp['startDate'] = strftime('%Y-%m-%d', $startDate_idx);
+                $temp['endDate'] = strftime('%Y-%m-%d', $endDate_idx);
+                $tempDate = $temp['endDate'];
+                $returnData[] = $temp;
+                $i = $i + 7;
+            }
+        } elseif ($type == 'month') {    // 查询所有月份以及开始结束时间
+            while (strtotime($tempDate) < strtotime($endDate)) {
+                $temp = [];
+                $month = strtotime('+' . $i . ' month', strtotime($startDate));
+                $temp['name'] = date('Y-m', $month);
+                $startDate_month = strtotime(date('Y-m-01', $month)) > strtotime($startDate) ? date('Y-m-01', $month) : $startDate;
+                $endDate_month = strtotime(date('Y-m-t', $month)) < strtotime($endDate) ? date('Y-m-t', $month) : $endDate;
+                $temp['startDate'] = $startDate_month;
+                $temp['endDate'] = $endDate_month;
+                $tempDate = $temp['endDate'];
+                $returnData[] = $temp;
+                ++$i;
+            }
+        } elseif ($type == 'quarter') {    // 查询所有季度以及开始结束时间
+            while (strtotime($tempDate) < strtotime($endDate)) {
+                $temp = [];
+                $quarter = strtotime('+' . $i . ' month', strtotime($startDate));
+                $q = ceil(date('n', $quarter) / 3);
+                $temp['name'] = date('Y', $quarter) . '第' . $q . '季度';
+                $temp['startDate'] = date('Y-m-01', mktime((int) 0, (int) 0, (int) 0, (int) ($q * 3 - 3 + 1), (int) 1, (int) (date('Y', $quarter))));
+                $temp['endDate'] = date('Y-m-t', mktime((int) 23, (int) 59, (int) 59, (int) ($q * 3), (int) 1, (int) (date('Y', $quarter))));
+                $tempDate = $temp['endDate'];
+                $returnData[] = $temp;
+                $i = $i + 3;
+            }
+        } elseif ($type == 'year') {    // 查询所有年份以及开始结束时间
+            while (strtotime($tempDate) < strtotime($endDate)) {
+                $temp = [];
+                $year = strtotime('+' . $i . ' year', strtotime($startDate));
+                $temp['name'] = date('Y', $year) . '年';
+                $startDate_year = strtotime(date('Y-01-01', $year)) > strtotime($startDate) ? date('Y-01-01', $year) : $startDate;
+                $endDate_year = strtotime(date('Y-12-31', $year)) < strtotime($endDate) ? date('Y-12-31', $year) : $endDate;
+                $temp['startDate'] = $startDate_year;
+                $temp['endDate'] = $endDate_year;
+                $tempDate = $temp['endDate'];
+                $returnData[] = $temp;
+                ++$i;
+            }
+        }
+        return $returnData;
+    }
+
+    /**
      * http请求
      *
      * @param $url

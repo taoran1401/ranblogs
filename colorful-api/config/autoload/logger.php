@@ -9,21 +9,70 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
+
+use Monolog\Handler;
+use Monolog\Formatter;
+use Monolog\Logger;
+
 return [
     'default' => [
-        'handler' => [
-            'class' => Monolog\Handler\StreamHandler::class,
-            'constructor' => [
-                'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
-                'level' => Monolog\Logger::DEBUG,
+        'handlers' => [
+            [
+                'class' => Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/info.log',
+                    'level' => Logger::INFO,
+                ],
+                'formatter' => [
+                    'class' => Formatter\LineFormatter::class,
+                    'constructor' => [
+                        'format' => null,
+                        'dateFormat' => null,
+                        'allowInlineLineBreaks' => true,
+                    ],
+                ],
             ],
-        ],
-        'formatter' => [
-            'class' => Monolog\Formatter\LineFormatter::class,
-            'constructor' => [
-                'format' => null,
-                'dateFormat' => 'Y-m-d H:i:s',
-                'allowInlineLineBreaks' => true,
+            [
+                'class' => Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/debug.log',
+                    'level' => Logger::DEBUG,
+                ],
+                'formatter' => [
+                    'class' => Formatter\JsonFormatter::class,
+                    'constructor' => [
+                        'batchMode' => Formatter\JsonFormatter::BATCH_MODE_JSON,
+                        'appendNewline' => true,
+                    ],
+                ],
+            ],
+            [
+                'class' => Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/error.log',
+                    'level' => Logger::ERROR,
+                ],
+                'formatter' => [
+                    'class' => Formatter\JsonFormatter::class,
+                    'constructor' => [
+                        'batchMode' => Monolog\Formatter\JsonFormatter::BATCH_MODE_JSON,
+                        'appendNewline' => true,
+                    ],
+                ],
+            ],
+            [
+                'class' => Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/warning.log',
+                    'level' => Logger::WARNING,
+                ],
+                'formatter' => [
+                    'class' => Formatter\JsonFormatter::class,
+                    'constructor' => [
+                        'batchMode' => Formatter\JsonFormatter::BATCH_MODE_JSON,
+                        'appendNewline' => true,
+                    ],
+                ],
             ],
         ],
     ],
