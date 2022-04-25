@@ -75,18 +75,19 @@ class BaiduIndex
     {
         //构建url
         $searchUrl = $this->buildSearchUrl($word, $startDate, $endDate, $area);
-
-        $option = [
+        //获取数据
+        $data = json_decode(Util::httpRequest($searchUrl, 'get', false, [
             'cookie' => $this->cookie
-        ];
-        $data = json_decode(Util::httpRequest($searchUrl, 'get', false, $option), true);
-        if ($data['status'] != 0) {
-            throw new \Exception($data['message']);
+        ]), true);
+
+        if (isset($data['status']) && $data['status'] == 0) {
+            //数据解析
+            $data = $this->decryptData($data['data']);
+            return $data;
         }
 
-        //数据解析
-        $data = $this->decryptData($data['data']);
-        return $data;
+        return false;
+        //throw new \Exception($data['message'] ?? '');
     }
 
     /**

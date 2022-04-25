@@ -26,7 +26,7 @@ class Export
         if ($isHeader) {
             fputcsv($file, ['name', 'date', 'value']);
         }
-
+        var_dump($data);
         foreach ($data as $val) {
             $formatData = $val['all']['formatData'];
             foreach ($formatData as $_val) {
