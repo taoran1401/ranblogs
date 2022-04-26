@@ -9,16 +9,7 @@ class BaiduIndex
     /** @var string 搜索指数 */
     const SEARCH_URL = 'https://index.baidu.com/api/SearchApi/index?';
 
-    /** @var string  */
-    const LIVE_URL = 'https://index.baidu.com/api/LiveApi/getLive?';
-
-    /** @var string  资讯 */
-    const NEWS_URL = 'https://index.baidu.com/api/NewsApi/getNewsIndex?';
-
-    /** @var string  资讯指数概览 */
-    const FEED_URL = 'https://index.baidu.com/api/FeedSearchApi/getFeedIndex?';
-
-    /** @var string  */
+    /** @var string 获取内容解密key */
     const PTBK_URL = 'https://index.baidu.com/Interface/api/ptbk?uniqid=';
 
     /** @var cookie */
@@ -71,7 +62,7 @@ class BaiduIndex
      * @return mixed
      * @throws \Exception
      */
-    public function search($word, $startDate, $endDate, $area, $export = '')
+    public function search($word, $startDate, $endDate, $area)
     {
         //构建url
         $searchUrl = $this->buildSearchUrl($word, $startDate, $endDate, $area);
