@@ -76,7 +76,7 @@ class BaiduIndex
             $data = $this->decryptData($data['data']);
             return $data;
         }
-
+        var_dump($data);exit;
         return false;
         //throw new \Exception($data['message'] ?? '');
     }

@@ -129,7 +129,7 @@ function draw(data) {
 
   if (config.background_image != '') {
     var background_image = config.background_image;
-    d3.select("body").attr("style", "background:" + "#00ff00 url('" + background_image + "') no-repeat fixed center;");
+    d3.select("body").attr("style", "background:" + "url('" + background_image + "') no-repeat fixed center;");
   } else {
     var background_color = config.background_color;
     d3.select("body").attr("style", "background:" + background_color);

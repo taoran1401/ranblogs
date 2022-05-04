@@ -58,7 +58,6 @@ class EportRank extends HyperfCommand
         // condition build
         $this->conditionBuild($names, $params);
         $names = $names->pluck('name');
-        var_dump($names);exit;
         //build csv
         fputcsv($file, ['name', 'other', 'date', 'value']);
         $names->each(function ($item) use ($dates, $file) {
