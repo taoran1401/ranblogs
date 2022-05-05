@@ -15,6 +15,7 @@ use App\Model\Article;
 use App\Packages\Crawler\src\Crawler;
 use Hyperf\Di\Annotation\Inject;
 use Marquine\Etl\Etl;
+use Phar;
 use function Taoran\HyperfPackage\Helpers\get_msectime;
 
 class IndexController extends AbstractController

@@ -51,12 +51,14 @@ class IndexBaidu extends HyperfCommand
 
     public function handle()
     {
+        $this->line('start');
+        $exec_start_time = time();
         //$this->rankService->genCsv('./202201_anime_rank.csv', '2022-01-01', '2022-04-09');
         $otherField = '海贼王';
         $word = [
             [
                 [
-                    'name' => '弗兰奇',
+                    'name' => '黄猿',
                     'wordType' => 1
                 ]
             ]
@@ -74,7 +76,6 @@ class IndexBaidu extends HyperfCommand
         $export = new Export();
         foreach ($yearScope as $key => $val) {
             $result = $baiduIndex->setCookie($cookie)->search($word, $val['startDate'], $val['endDate'], $area);
-
             //$export->csv('storage/23-20220423.csv', $result, ($key > 0) ? false : true);
 
             //Insert db rank
@@ -82,6 +83,10 @@ class IndexBaidu extends HyperfCommand
 
             sleep(3);
         }
+
+        $elapsed_info = '耗时:' . (time() - $exec_start_time) . 's';
+        $this->line('end；' . $elapsed_info);
+
         return true;
     }
 
@@ -97,16 +102,18 @@ class IndexBaidu extends HyperfCommand
         foreach ($data as $val) {
             $formatData = $val['all']['formatData'];
             foreach ($formatData as $_val) {
-                $model->updateOrInsert(
-                    ['date' => $_val['date'], 'name' => $_val['word']],
-                    [
-                        'name' => $_val['word'],
-                        'date' => $_val['date'],
-                        'value' => $_val['value'],
-                        'other' => $otherField,
-                        'origin' => $origin
-                    ]
-                );
+                if ($_val['value'] > 0) {
+                    $model->updateOrInsert(
+                        ['date' => $_val['date'], 'name' => $_val['word']],
+                        [
+                            'name' => $_val['word'],
+                            'date' => $_val['date'],
+                            'value' => $_val['value'],
+                            'other' => $otherField,
+                            'origin' => $origin
+                        ]
+                    );
+                }
             }
         }
     }

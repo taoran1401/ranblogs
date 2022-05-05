@@ -44,7 +44,8 @@ class EportRank extends HyperfCommand
     {
         $file = 'storage/hzw_001.csv';
         $this->exportCsv($file, [
-            'other' => '海贼王',
+            //'other' => '',
+            'names' => [],
         ], '2011-01-01', '2022-04-25');
     }
 
@@ -58,7 +59,7 @@ class EportRank extends HyperfCommand
         // condition build
         $this->conditionBuild($names, $params);
         $names = $names->pluck('name');
-        var_dump($names);exit;
+
         //build csv
         fputcsv($file, ['name', 'other', 'date', 'value']);
         $names->each(function ($item) use ($dates, $file) {
@@ -87,6 +88,10 @@ class EportRank extends HyperfCommand
      */
     public function conditionBuild($model, $params)
     {
+        if (isset($params['names']) && $params['names'] != '') {
+            $model->whereIn('name', $params['names']);
+        }
+
         if (isset($params['other']) && $params['other'] != '') {
             $model->where('other', $params['other']);
         }

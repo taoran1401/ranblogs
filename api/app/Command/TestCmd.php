@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Event\Demo;
+use App\Job\TestJob;
 use App\Packages\DataInterface\src\BaiduIndex;
 use App\Packages\DataInterface\src\Export;
 use App\Service\RankService;
 use Carbon\Carbon;
+use Hyperf\AsyncQueue\Driver\DriverFactory;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Context\Context;
@@ -44,9 +46,14 @@ class TestCmd extends HyperfCommand
      */
     protected $eventDispatcher;
 
-    public function __construct(ContainerInterface $container)
+    /**
+     */
+    protected $driver;
+
+    public function __construct(ContainerInterface $container, DriverFactory $driverFactory)
     {
         $this->container = $container;
+        $this->driver = $driverFactory->get('default');
 
         parent::__construct('test:cmd');
     }
@@ -59,6 +66,10 @@ class TestCmd extends HyperfCommand
 
     public function handle()
     {
+        //$res = $this->driver->push(new TestJob(), 0);
+        return true;
+
+
         //关键词
 //        $word = [
 //            [

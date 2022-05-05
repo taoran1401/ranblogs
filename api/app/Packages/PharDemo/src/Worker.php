@@ -5,9 +5,4 @@ class Worker
     {
         echo 'run';
     }
-
-    public function checkEnv()
-    {
-
-    }
 }
