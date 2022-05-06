@@ -76,10 +76,21 @@ Router::addGroup('/api/admin', function () {
     Router::post('/config/base', 'App\Controller\Admin\ConfigController@updateBase');
 }, ['middleware' => [\App\Middleware\AdminAuthMiddleware::class, \App\Middleware\RBACMiddleware::class]]);
 
+
 /**
  * api
  */
 Router::addGroup('/api', function () {
+    //注册
+    Router::post('/api/register', 'App\Controller\Api\UserController@register');
+    //注册
+    Router::post('/api/login', 'App\Controller\Api\UserController@login');
+    //退出
+    Router::post('/api/logout', 'App\Controller\Api\UserController@logout');
+    //修改密码
+    Router::post('/api/users/reset/password', 'App\Controller\Api\UserController@resetPassword');
+    //修改个人信息
+    Router::put('/api/users', 'App\Controller\Api\UserController@update');
     //文章
     Router::get('/articles', 'App\Controller\Api\ArticleController@index');
     Router::get('/articles/{id}', 'App\Controller\Api\ArticleController@show');
@@ -97,5 +108,5 @@ Router::addGroup('/api', function () {
     //关于
     Router::get('/about_us', 'App\Controller\Api\ConfigController@AboutUs');
     // 百度指数数据获取
-    Router::post('/baidu/indexs', 'App\Controller\Api\RankController@baiduIndexInsert');
+    //Router::post('/baidu/indexs', 'App\Controller\Api\RankController@baiduIndexInsert');
 });

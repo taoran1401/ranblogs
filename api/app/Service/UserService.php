@@ -23,54 +23,59 @@ class UserService extends AbstractController
      */
     protected $jwt;
 
-    public function login(array $params)
+    /**
+     * 更新
+     */
+    public function update($params)
     {
-        //参数验证
-        $validator = $this->validationFactory->make(
-            $params,
-            [
-                'email' => 'required|email',
-                'password' => 'required',
-            ],
-            [
-                'email.required' => '邮箱不能为空！',
-                'email.email' => '请填写正确的邮箱！',
-                'password.required' => '请填写密码！',
-            ]
-        );
+        /*array_filter($params, function ($item) {
 
-        if ($validator->fails()) {
-            throw new \Exception($validator->errors()->first());
-        }
+        });*/
 
-        try {
-            $user = \App\Model\User::where('email', $params['email'])->first();
-            if (!$user) {
-                throw new \Exception("用户不存在！");
-            }
 
-            //密码check
-            if (!eq_password($user->password, $params['password'], $user->salt)) {
-                throw new \Exception("密码错误！");
-            }
-
-            //创建token
-            $token = (string) $this->jwt->getToken(['user_id' => $user->id]);
-            return ['token' => $token, 'nickname' => $user->nickname,'expires' => $this->jwt->getTTL()];
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
-        }
     }
 
+    /**
+     * 登录
+     *
+     * @param array $params
+     * @return array
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function login(array $params)
+    {
+        $user = \App\Model\User::where('email', $params['email'])->first();
+        if (!$user) {
+            throw new \Exception("用户不存在！");
+        }
+
+        //密码check
+        if (!eq_password($user->password, $params['password'], $user->salt)) {
+            throw new \Exception("密码错误！");
+        }
+
+        //创建token
+        $token = (string) $this->jwt->getToken(['user_id' => $user->id]);
+        return ['token' => $token, 'nickname' => $user->nickname,'expires' => $this->jwt->getTTL()];
+    }
+
+    /**
+     * 注册
+     *
+     * @param array $params
+     * @throws \Exception
+     */
     public function register(array $params)
     {
-
         try {
             Db::beginTransaction();
 
             if (\App\Model\User::where('email', $params['email'])->exists()) {
                 throw new \Exception("该邮箱已经被注册！");
             }
+            /*if (\App\Model\User::where('username', $params['username'])->exists()) {
+                throw new \Exception("该用户名已经被注册！");
+            }*/
 
             if (\App\Model\User::where('nickname', $params['nickname'])->exists()) {
                 throw new \Exception("该昵称已经被使用！");
@@ -92,5 +97,17 @@ class UserService extends AbstractController
             Db::rollBack();
             throw new \Exception($e->getMessage());
         }
+    }
+
+    /**
+     * 退出
+     *
+     * @return bool
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function logout()
+    {
+        $this->jwt->logout();
+        return true;
     }
 }

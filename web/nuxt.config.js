@@ -18,7 +18,8 @@ export default {
 
   proxy: { // 代理转发 
     '/api': { // /api/test > http://mengxuegu.com:7300/mock/5ee6e6a9e56c02034c4c2e89/blog-web/test
-      target: 'http://mengxuegu.com:7300/mock/5ee6e6a9e56c02034c4c2e89/blog-web',
+      // target: 'http://mengxuegu.com:7300/mock/5ee6e6a9e56c02034c4c2e89/blog-web',
+      target: 'http://127.0.0.1:7300',
       pathRewrite: {'^/api': ''}
     }
   },
@@ -27,7 +28,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: '梦学谷博客社区门户网',
+    title: '博客社区门户网',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
