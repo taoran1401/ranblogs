@@ -153,9 +153,9 @@ class IndexBaidu extends HyperfCommand
 
     public function des()
     {
-        //Interface/ptbk
+        //uri: Interface/ptbk
         $ptbk = "fodztw.YSKWc0-b250%4,3+697-1.8";
-        //api/SearchApi/index
+        //uri: api/SearchApi/index
         $jsonData = "{\"status\":0,\"data\":{\"userIndexes\":[{\"word\":[{\"name\":\"php\",\"wordType\":1}],\"all\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"fWWtwfSbWwfSd0wfob0wfoW.w0Wf0w0SWKwfbd0wfWfSwfootwfSdSwfo.tw0S.ow0ootwfWtSwfSf0wfSofwfSt.wfoddw0oKbw0ooSwfoSWwfSotwfSfSwfSWSwftWKw0S.bw0S.fwfoffwfW.d\"},\"pc\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"0bbtw0WK0w0Wfow0Wdbw0WdKwKtSwbWKw0K.bw0botw0Sbfw0W.0w0SbfwK0bwbS.w0bW0w0Wofw0Wb0w0WSSw0SotwK0WwbSdw0W0tw0WKow0WK.w0b.dw0StKwK0Kwbbtw0SWKw0bSS\"},\"wise\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"bKdwbKSwbWSwbW.wbStwWWowbddwbS.wbWfwbWfwbWowbofwW0WwSK0wbWowbSKwbW0wbWWwbtSwSb0wSKSwbo.wboKwb..wbtSwb.dwW0KwWtbwbt.wbSt\"},\"type\":\"day\"},{\"word\":[{\"name\":\"java\",\"wordType\":1}],\"all\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"0dW.ow00dobw0dS0tw0dboWw0d.ftwW0ffwSWW.w0dSd0w0dfSdw0doSfw0d0t.wK0SWwStKKwS0bfwKbdtwKStfwKo.WwKtSKwbt0twSddWwoKtSwKtfKwKoftwKffdwK0obwbSdWwSffSwS00bwKtofwKSWd\"},\"pc\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"Sf0bwSWdfwSffdwSS..wS0tSw.f0owfbSdwS.towobotwSdSowoSKWwood0w.dSWwfWoowoKSWwoK.twoK00woWoSwodKowfbb0wfWf0wobfdwoKoKwoWdowoSbSwofWbw.dWfwfbodwoKt.wobto\"},\"wise\":{\"startDate\":\"2022-06-27\",\"endDate\":\"2022-07-26\",\"data\":\"to0Wwt.oSwt.Ktwtfftwt0Wbw.KdWw.K0.wtfoSwttdSwttKWwtttSw.SSSw.t.fw.tfWw.b.Ww.Wdbw.SfSw.W0.w..0Kw.0fSw.ffow.SdKw.oSow.o0ow.tWfw..fKw.0otw.fSbw.odKw.bfo\"},\"type\":\"day\"}],\"generalRatio\":[{\"word\":[{\"name\":\"php\",\"wordType\":1}],\"all\":{\"avg\":2362,\"yoy\":-8,\"qoq\":-1},\"pc\":{\"avg\":1534,\"yoy\":-9,\"qoq\":1},\"wise\":{\"avg\":827,\"yoy\":-6,\"qoq\":-5}},{\"word\":[{\"name\":\"java\",\"wordType\":1}],\"all\":{\"avg\":8904,\"yoy\":6,\"qoq\":3},\"pc\":{\"avg\":5123,\"yoy\":-7,\"qoq\":9},\"wise\":{\"avg\":3780,\"yoy\":34,\"qoq\":-2}}],\"uniqid\":\"82a7d95a2e0a153b17d3c49dde45a1c1\"},\"logid\":2717214935,\"message\":0}";
         $data = json_decode($jsonData, true);
 
@@ -164,9 +164,20 @@ class IndexBaidu extends HyperfCommand
 
         //etl
         $export = new Export();
-        $csvName = time() . rand(1000, 9999) . "csv";
-        $export->csv("storage/csv/" . $csvName, $content, false);
+        $csvName = $this->genCsvName("a.csv");
+        $export->csv("storage/csv/" . $csvName, $content, true);
         //var_dump($content);
         exit;
+    }
+
+    /**
+     * 生成名字
+     *
+     * @param bool $name
+     * @return bool|string
+     */
+    public function genCsvName($name = false)
+    {
+        return $name ?? date("Y_m_d_H_i_s_", time()) . rand(1000, 9999) . ".csv";
     }
 }
