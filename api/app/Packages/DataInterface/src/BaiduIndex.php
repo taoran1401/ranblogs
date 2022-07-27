@@ -76,7 +76,7 @@ class BaiduIndex
             $data = $this->decryptData($data['data']);
             return $data;
         }
-        var_dump($data);exit;
+
         return false;
         //throw new \Exception($data['message'] ?? '');
     }
@@ -108,15 +108,18 @@ class BaiduIndex
      * @return mixed
      * @throws \Exception
      */
-    public function decryptData($data)
+    public function decryptData($data, $dataKey = false)
     {
-        $uniqid = $data['uniqid'];
-        $dataKey = $this->getKey($uniqid);
+        if ($dataKey == false) {
+            $uniqid = $data['uniqid'];
+            $dataKey = $this->getKey($uniqid);
+        }
         $userIndexes = $data['userIndexes'];
         foreach ($userIndexes as $key => $val) {
             // words
             $word = $this->implodeWords($val['word']);
             // decrypt
+
             $userIndexes[$key]['all']['data'] = $this->decrypt($dataKey, $val['all']['data']);
             // format data
             $dataScope = \App\Packages\DataInterface\src\Util::getDateByInterval($val['all']['startDate'], $val['all']['endDate'], 'day');
